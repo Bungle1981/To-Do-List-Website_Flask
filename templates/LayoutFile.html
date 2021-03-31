@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+        {% block head %}
+        <title>To-Do List Project</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="static/assets/css/noscript.css" /></noscript>
+        {% endblock %}
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+					<header id="header" class="alt">
+<!--						<span class="logo"><img src="static/images/logo.svg" alt="" /></span>-->
+						{% block title %}
+                        <h1>To Do List Project</h1>
+                        {% endblock %}
+						<p>Stellar webpage template built by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</header>
+
+				<!-- Nav -->
+					{% block navbar %}
+					<nav id="nav">
+						<ul>
+							<li><a href="{{ url_for('home') }}" class="active">Home Page</a></li>
+							<li><a href="{{ url_for('myTasks') }}">My Tasks</a></li>
+							<li><a href="{{ url_for('add_new_task') }}">Add New Task</a></li>
+							<li><a href="{{ url_for('login') }}">Login</a></li>
+							<li><a href="{{ url_for('register') }}">Register</a></li>
+							<li><a href="{{ url_for('logout') }}">Logout</a></li>
+						</ul>
+					</nav>
+					{% endblock %}
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction -->
+							<section id="intro" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2>{% block sectionheader %}Ipsum sed adipiscing{% endblock %}</h2>
+										</header>
+										{% block sectioncontent %}
+                                        <p>Sed lorem ipsum dolor sit amet nullam consequat feugiat consequat magna
+										adipiscing magna etiam amet veroeros. Lorem ipsum dolor tempus sit cursus.
+										Tempus nisl et nullam lorem ipsum dolor sit amet aliquam.</p>
+                                        {% endblock %}
+									</div>
+								</div>
+							</section>
+
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/jquery.scrollex.min.js"></script>
+			<script src="static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="static/assets/js/browser.min.js"></script>
+			<script src="static/assets/js/breakpoints.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<script src="static/assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,53 @@
+{% extends "LayoutFile.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block sectionheader %}These are your outstanding tasks...{% endblock %}
+
+{% block navbar %}
+<nav id="nav">
+    <ul>
+        <li><a href="{{ url_for('myTasks') }}" class="Active">My Tasks</a></li>
+        <li><a href="{{ url_for('add_new_task') }}">Add New Task</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block sectioncontent %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p style='color:red;'>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<p>You can click your task history as a CSV file by clicking <a href="{{ url_for('downloadFile') }}">here</a></p>
+{% if tasks %}
+    <table class="table">
+        <thead>
+            <td>Task Name</td>
+            <td>Task Description</td>
+            <td>Current Status</td>
+            <td>Due Date</td>
+            <td>Task Actions</td>
+        </thead>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.task_name }}</td>
+                <td>{{ task.task_details }}</td>
+                <td>{{ task.current_status }}</td>
+                <td>{{ task.due_date }}</td>
+                <td><a href="{{ url_for('CompleteTask', id=task.id) }}">Mark as complete</a></td>
+                <td><a href="{{ url_for('Delete', id=task.id) }}">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p style="color:red;">You have no outstanding tasks remaining...</p>
+{% endif %}
+
+
+
+
+{% endblock %}

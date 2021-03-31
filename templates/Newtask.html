@@ -1,0 +1,21 @@
+{% extends "LayoutFile.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block sectionheader %}Add a new task...{% endblock %}
+
+{% block navbar %}
+<nav id="nav">
+    <ul>
+        <li><a href="{{ url_for('myTasks') }}">My Tasks</a></li>
+        <li><a href="{{ url_for('add_new_task') }}" class="active">Add New Task</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block sectioncontent %}
+<form method="POST" action="{{ url_for('add_new_task') }}" novalidate>
+    {{ wtf.quick_form(form, novalidate=True) }}
+</form>
+
+{% endblock %}

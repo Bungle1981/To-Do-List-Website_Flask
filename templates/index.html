@@ -1,0 +1,27 @@
+{% extends "LayoutFile.html" %}
+
+
+{% block sectionheader %}Welcome to the site!{% endblock %}
+
+{% block navbar %}
+<nav id="nav">
+    <ul>
+        <li><a href="{{ url_for('home') }}" class="active">Home Page</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        <li><a href="{{ url_for('register') }}">Register</a></li>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block sectioncontent %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p style='color:red;'>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<p>Keep track of those important events and to-do list items!</p>
+<p>One you have <a href="{{ url_for('register') }}">registered</a> for the site, <a href="{{ url_for('login') }}">login</a> to add, view, complete or delete your tasks!</p>
+
+{% endblock %}
